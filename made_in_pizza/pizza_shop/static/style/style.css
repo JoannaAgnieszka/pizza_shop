@@ -1,0 +1,165 @@
+body {
+    background-color: white;
+}
+
+.logo {
+    height: 150px;
+    overflow: hidden;
+    margin-top: -100px;
+    padding-top: 100px;
+}
+
+
+.menu {
+    background-color: white;
+}
+
+.scroll{
+    overflow-y: scroll;
+    height: 600px;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+}
+
+.menu_choice a {
+    display: block;
+    text-decoration: none;
+    border: solid 2px orange;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 20px;
+    height: 30px;
+    min-width: 100px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+}
+
+nav ul, .menu_choice ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+.telephone {
+    text-decoration: none;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+}
+
+h2 {
+    font-family: SpeedeeW, Arial, Helvetica, sans-serif;
+    color: #212529;
+}
+
+.o_nas, .koszyk {
+    display: block;
+    text-decoration: none;
+    border: solid 2px orange;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 20px;
+    height: 30px;
+    min-width: 100px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+}
+
+.container {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container div {
+    text-decoration: none;
+    color:  black;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    border: white;
+}
+
+.container div img {
+    border: 2px white;
+    height: 100px;
+}
+
+.main_font {
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+}
+
+.details {
+    width: 35%;
+
+}
+
+.ingredient {
+    /*border: black solid 1px;*/
+    display: none;
+    width: 33%;
+}
+
+.ingredient img {
+    /*border: solid red 1px;*/
+    width: 20%;
+    max-height: 150px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.disable:disabled {
+
+}
+
+.date_display {
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+}
+
+.footer {
+    background: orange;
+    font-family: SpeedeeW,Arial,Helvetica,sans-serif;
+}
+
+.ingredient {
+    list-style-type: none;
+}
+
+.ingredient_name {
+    display: inline-block;
+    min-width: 196px;
+}
+
+.mapa {
+    width: 200px;
+}
+
+.mapa:hover {
+    width: 100%;
+}
+
+

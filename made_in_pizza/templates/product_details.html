@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Szczegóły produktu</title>
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    <h2>{{ product.name }}
+    <span id="price">
+        {% if product.type.name == 'Pizza' %}
+             {{ product.pizza.big_price }}
+        {% else %}
+             {{ product.regular_price }}
+        {% endif %}
+    </span>
+    zł
+    </h2>
+    <form action="/cart/add/{{ product.id }}" method="post">
+        {% csrf_token %}
+            <input type="number" step="1" min="1" name="quantity" value="1">
+            <input type="submit" value="Zamawiam">
+    </p>
+
+    <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="details">
+
+    {% if product.type.name == 'Pizza' %}
+        <p><h3>Wybierz rozmiar:</h3></p>
+    <input id="smallPizza" type="radio" name="size" value="small">Mała pizza 28 cm <span id="regular_price">{{ product.regular_price }}</span> zł
+    <input id="bigPizza" type="radio" name="size" value="big" checked>Duża pizza 33 cm <span id="big_price">{{ product.pizza.big_price }}</span> zł
+    {% endif %}
+
+        {% if product.type.name == 'Box wakacyjny' %}
+        <p class="box_description">
+        <h2>Zadzwoń do nas i zamów niepowtarzalny zestaw dla siebie i swoich przyjaciół.</h2> <br><br>
+            BOX dla 3-ki: każda mała pizza, tost, zapiekanka + dwa dowolne sosy gratis i pyszny orzeźwiający napój <br><br>
+            BOX dla 5-ki: każda duża pizza, niesamowita sałatka, tost, zapiekanka + dwa dowolne sosy gratis i pyszny orzeźwiający napój
+
+        </p>
+        {% endif %}
+
+
+       {% if product.type.name != 'Box wakacyjny' and product.type.name != 'Napoje' %}
+    <div class="ingredients">
+    <p><h3>Wybierz składniki:</h3></p>
+
+    {% for ingredient in ingredients %}
+        <div class="ingredient{% if ingredient in product.ingredients.all %} show main {% endif %}">
+            <span class="ingredient_name">{{ ingredient.name }}</span>
+<!--             <input type="checkbox" name="{{ ingredient.name }}" value="{{ ingredient.name }}">-->
+            <img src="/media/{{ ingredient.image }}" alt="{{ ingredient.image }}">
+            <input type="hidden" value="{{ ingredient.id }}" name="ingredient">
+            <button type="button" class="plus">+</button>
+            {% if ingredient in product.ingredients.all %}
+            <span class="counter">1</span>
+                {% else %}
+                <span class="counter">0</span>
+            {% endif %}
+            <button type="button" class="minus">-</button>
+            <div><span class="price">{{ ingredient.price }}</span>zł</div>
+        </div>
+
+    {% endfor %}
+    {% endif %}
+
+    </div>
+    </form>
+
+{#    <button id="add_ingredients">#}
+{#    Dodatkowe składniki#}
+{#    </button>#}
+
+    {% endblock %}
+    {% block scripts %}
+        <script src="/static/js/app.js"></script>
+        <script>
+            show_ingredients()
+        </script>
+    {% endblock %}

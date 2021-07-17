@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Moje zamówienie</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Dziękujemy za złożenie zamówienia :) </h1>
+
+    <p>
+    Podsumowanie zamówienia
+    </p>
+
+   {% for order in order_list %}
+      <div>
+      Numer zamówienia
+      {{ order.pk }}
+      </div>
+       <div>
+       Kwota zamówienia
+       {{ order.total_sum }}
+       </div>
+       <div>
+       Twój numer telefonu
+       {{ order.phone_number }}
+       </div>
+       <div>
+       Sposób odbioru
+       {{ order.get_pickup_method_display }}
+       </div>
+       <div>
+       Punkt dostawy
+       {{ order.get_delivery_point_display }}
+       </div>
+       <div>
+       Twój adres
+            {{ order.street }}
+            {{ order.house_nr }}
+            {{ order.postal_code }}
+            {{ order.city }}
+       </div>
+       <div>
+       Sposób zapłaty
+       {{ order.get_payment_method_display }}
+       </div>
+
+    {% endfor %}
+
+    <p>
+    <h3>
+    Poinformujemy Cię o kolejnych etapach realizacji zamówienia. Pozostajemy w kontakcie!
+    </h3>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Main_page</title>
+{% endblock %}
+
+ {% block content %}
+
+     {% for type in types %}
+
+    <p id="{{ type.name|slugify }}" class="main_font"><h2>{{ type.name }}</h2></p>
+
+    <div class="container">
+         {% for product in type.product_set.all %}
+             <a style="text-decoration: none;"  href="/product_details/{{ product.pk }}">
+                <div>
+                    <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                    <p><h3>{{ product.name }}</h3></p>
+                </div>
+             </a>
+
+         {% endfor %}
+    </div>
+
+    {% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

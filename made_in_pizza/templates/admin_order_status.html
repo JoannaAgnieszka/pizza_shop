@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+{% for order in object_list %}
+
+    <li>
+        {{ order }}
+    <ul>
+        {% for ordered_product in order.productquantity_set.all %}
+        <li>
+           {{ ordered_product.product }}
+            x
+           {{ ordered_product.quantity }}
+        <ul>
+            {% for ingredient in ordered_product.ingredientquantity_set.all %}
+                <li>
+                {{ ingredient.ingredient }}
+                    x
+                {{ ingredient.quantity }}
+                </li>
+                {% endfor %}
+        </ul>
+        </li>
+
+        {% endfor %}
+    </ul>
+    </li>
+
+
+
+{% endfor %}
+</ul>
+
+{% endblock %}

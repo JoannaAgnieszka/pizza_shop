@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Koszyk</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Twój koszyk </h1>     Suma całkowita zamówienia: {{ total_sum }} zł
+
+    <ul>
+        {% for product, quantity, ingredients in product_list %}
+            <li>
+
+
+
+                {{ product.name }}
+                <ul class="ingredients">
+                    {% for ingredient, ingredient_qty in ingredients %}
+                        <li>
+                        {{ ingredient }},
+                        ilość: {{ ingredient_qty }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {{ quantity }}
+                    x {{ product.regular_price }} = {{ product.part_sum }} zł
+
+<!--            <button class="plus">+</button>-->
+<!--            {% if product in product_list %}-->
+<!--            <span class="counter">1</span>-->
+<!--                {% else %}-->
+<!--                <span class="counter">0</span>-->
+<!--            {% endif %}-->
+<!--            <button class="minus">-</button>-->
+<!--                <div><span class="price">{{ product.part_sum }}</span>zł</div>-->
+                <a href="/product_details/{{ product.pk }}"><button>Zmień</button></a>
+
+                <input id="btn_delete" type="reset"  value="Usuń">
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <img class="mapa" src="/static/images/Mrzeżyno, mapa.png">
+
+<div>
+<form action="/order/create/" method="post">
+{% csrf_token %}
+
+    {{ form|crispy }}
+    <p><input type="submit" value="Zamawiam"></p>
+</form>
+</div>
+
+            <br>
+                </p><a href="/cart/delete"><button>Usuń produkty z koszyka</button></a>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="/static/js/cart.js"></script>
+{% endblock %}
+
